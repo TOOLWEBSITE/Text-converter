@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Fancy Text Generator | YourBlogName</title>
+    <meta name="description" content="Generate fancy text styles with advanced customization for social media, blogs, and websites with our free fancy text generator tool.">
+    <style>
+        /* Reset and Base Styles */
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #a29bfe;
+            --dark-color: #2d3436;
+            --light-color: #f5f6fa;
+            --success-color: #00b894;
+            --danger-color: #d63031;
+            --warning-color: #fdcb6e;
+            --text-color: #333;
+            --bg-color: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: var(--dark-color);
+            padding: 1rem 0;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        
+        .nav-link {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+        
+        .nav-link:hover {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-link.active {
+            color: white;
+            background-color: var(--primary-color);
+        }
+        
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+            min-height: 60vh;
+        }
+        
+        /* Page Content Styles */
+        .page-content {
+            display: none;
+        }
+        
+        .page-content.active {
+            display: block;
+        }
+        
+        /* Tool Section */
+        .tool-section {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        /* Input/Output Area */
+        .text-area-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .text-area-container {
+                flex-direction: row;
+            }
+            
+            .text-area-wrapper {
+                flex: 1;
+            }
+        }
+        
+        .text-area-wrapper {
+            position: relative;
+        }
+        
+        .text-area-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            resize: vertical;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .btn:hover {
+            background-color: #5649c0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #8c7ae6;
+        }
+        
+        .btn-success {
+            background-color: var(--success-color);
+        }
+        
+        .btn-success:hover {
+            background-color: #00a884;
+        }
+        
+        .btn-danger {
+            background-color: var(--danger-color);
+        }
+        
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+        
+        /* Style Buttons */
+        .style-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .style-btn {
+            padding: 0.6rem 1rem;
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .style-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .style-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* Copy Button */
+        .copy-btn {
+            position: absolute;
+            top: 35px;
+            right: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 4px;
+            padding: 0.3rem 0.6rem;
+            font-size: 0.8rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* Advanced Controls */
+        .advanced-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .control-group {
+            margin-bottom: 1rem;
+        }
+        
+        .control-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark-color);
+            font-size: 0.9rem;
+        }
+        
+        .control-input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        
+        .color-picker {
+            width: 100%;
+            height: 40px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .range-slider {
+            width: 100%;
+        }
+        
+        /* Preview Section */
+        .preview-section {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .preview-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+        
+        #text-preview {
+            font-size: 1.5rem;
+            word-break: break-word;
+            min-height: 100px;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+        
+        /* Ad Container */
+        .ad-container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eee;
+        }
+        
+        .ad-label {
+            display: block;
+            font-size: 0.8rem;
+            color: #777;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .footer-links a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            opacity: 0.8;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+        
+        /* Content Pages */
+        .content-page {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .content-page h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .content-page h3 {
+            color: var(--primary-color);
+            margin: 1.5rem 0 0.5rem;
+        }
+        
+        .content-page p {
+            margin-bottom: 1rem;
+        }
+        
+        .content-page ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+            }
+            
+            .btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            
+            .advanced-controls {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-container {
+                gap: 0.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .tool-section, .content-page {
+                padding: 1.5rem;
+            }
+            
+            .style-buttons {
+                justify-content: center;
+            }
+        }
+        
+        /* Dark Mode */
+        body.dark-mode {
+            --light-color: #2d3436;
+            --dark-color: #f5f6fa;
+            --bg-color: #1e272e;
+            --text-color: #f5f6fa;
+            background-color: #1e272e;
+            color: #f5f6fa;
+        }
+        
+        body.dark-mode .tool-section,
+        body.dark-mode .ad-container,
+        body.dark-mode #text-preview,
+        body.dark-mode .content-page {
+            background-color: #2d3436;
+            color: #f5f6fa;
+        }
+        
+        body.dark-mode textarea {
+            background-color: #2d3436;
+            color: #f5f6fa;
+            border-color: #555;
+        }
+        
+        body.dark-mode .advanced-controls,
+        body.dark-mode .preview-section {
+            background-color: #3d454d;
+        }
+        
+        body.dark-mode .style-btn {
+            background-color: #2d3436;
+            color: #f5f6fa;
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Advanced Fancy Text Generator</h1>
+            <p class="tagline">Create stylish, unique text with advanced customization</p>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-link active" data-page="home">Home</a>
+            <a href="#" class="nav-link" data-page="privacy">Privacy Policy</a>
+            <a href="#" class="nav-link" data-page="terms">Terms of Service</a>
+            <a href="#" class="nav-link" data-page="about">About Us</a>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <!-- Home Page -->
+        <div id="home-page" class="page-content active">
+            <!-- Ad Container (Top) -->
+            <div class="ad-container">
+                <span class="ad-label">Advertisement</span>
+                <!-- Replace this div with your Adsterra ad code -->
+                <div id="adsterra-top-ad">
+     
+                    <!-- Example: -->
+                    <script type="text/javascript">
+	                atOptions = {
+		           'key' : 'edd98e5695f91d31a8d596ba781f4046',
+		           'format' : 'iframe',
+		           'height' : 250,
+		           'width' : 300,
+		           'params' : {}
+	               };
+                   </script>
+                   <script type="text/javascript" src="//www.highperformanceformat.com/edd98e5695f91d31a8d596ba781f4046/invoke.js"></script>
+                  
+                   <script type="text/javascript">
+	               atOptions = {
+		           'key' : 'd741a6e1f06f13a2fd413a8b829aeada',
+		           'format' : 'iframe',
+		           'height' : 90,
+		           'width' : 728,
+		           'params' : {}
+	               };
+                   </script>
+                   <script type="text/javascript" src="//www.highperformanceformat.com/d741a6e1f06f13a2fd413a8b829aeada/invoke.js"></script>
+                     
+                   <script type="text/javascript">
+	               atOptions = {
+		          'key' : '71da33fad09328259101ed01a803fc3c',
+		           'format' : 'iframe',
+		           'height' : 50,
+		           'width' : 320,
+		           'params' : {}
+	               };
+                   </script>
+                   <script type="text/javascript" src="//www.highperformanceformat.com/71da33fad09328259101ed01a803fc3c/invoke.js"></script>
+                  
+                  
+                  
+                  
+                </div>
+            </div>
+            
+            <!-- Main Tool Section -->
+            <div class="tool-section">
+                <h2 class="section-title">Generate Fancy Text</h2>
+                
+                <div class="text-area-container">
+                    <div class="text-area-wrapper">
+                        <label for="normal-text" class="text-area-label">Normal Text (Input):</label>
+                        <textarea id="normal-text" placeholder="Type or paste your text here..."></textarea>
+                    </div>
+                    
+                    <div class="text-area-wrapper">
+                        <label for="fancy-text" class="text-area-label">Fancy Text (Output):</label>
+                        <textarea id="fancy-text" placeholder="Your fancy text will appear here..." readonly></textarea>
+                        <button class="copy-btn" id="copy-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            Copy
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="button-group">
+                    <button class="btn btn-success" id="generate-btn">Generate Fancy Text</button>
+                    <button class="btn btn-secondary" id="clear-btn">Clear All</button>
+                    <button class="btn" id="random-style-btn">Random Style</button>
+                </div>
+                
+                <h3 class="section-title" style="margin-top: 2rem;">Text Styles</h3>
+                <div class="style-buttons">
+                    <button class="style-btn" data-style="bold">Bold</button>
+                    <button class="style-btn" data-style="italic">Italic</button>
+                    <button class="style-btn" data-style="underline">Underline</button>
+                    <button class="style-btn" data-style="strikethrough">Strikethrough</button>
+                    <button class="style-btn" data-style="smallcaps">Small Caps</button>
+                    <button class="style-btn" data-style="superscript">Superscript</button>
+                    <button class="style-btn" data-style="subscript">Subscript</button>
+                    <button class="style-btn" data-style="double-struck">Double Struck</button>
+                    <button class="style-btn" data-style="script">Script</button>
+                    <button class="style-btn" data-style="fraktur">Fraktur</button>
+                    <button class="style-btn" data-style="monospace">Monospace</button>
+                    <button class="style-btn" data-style="circled">Circled</button>
+                    <button class="style-btn" data-style="inverse">Inverse</button>
+                    <button class="style-btn" data-style="upside-down">Upside Down</button>
+                    <button class="style-btn" data-style="zalgo">Zalgo</button>
+                    <button class="style-btn" data-style="bubble">Bubble</button>
+                    <button class="style-btn" data-style="square">Square</button>
+                </div>
+                
+                <!-- Advanced Controls -->
+                <h3 class="section-title" style="margin-top: 2rem;">Advanced Customization</h3>
+                <div class="advanced-controls">
+                    <div class="control-group">
+                        <label class="control-label">Text Color:</label>
+                        <input type="color" id="text-color" class="color-picker" value="#000000">
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label">Background Color:</label>
+                        <input type="color" id="bg-color" class="color-picker" value="#ffffff">
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label">Text Size:</label>
+                        <input type="range" id="text-size" class="range-slider" min="12" max="72" value="24">
+                        <span id="text-size-value">24px</span>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label">Font Family:</label>
+                        <select id="font-family" class="control-input">
+                            <option value="Arial, sans-serif">Arial</option>
+                            <option value="'Times New Roman', serif">Times New Roman</option>
+                            <option value="'Courier New', monospace">Courier New</option>
+                            <option value="'Georgia', serif">Georgia</option>
+                            <option value="'Palatino Linotype', 'Book Antiqua', Palatino, serif">Palatino</option>
+                            <option value="'Comic Sans MS', cursive">Comic Sans</option>
+                        </select>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label">Text Shadow:</label>
+                        <select id="text-shadow" class="control-input">
+                            <option value="none">None</option>
+                            <option value="1px 1px 2px rgba(0,0,0,0.5)">Small Shadow</option>
+                            <option value="2px 2px 4px rgba(0,0,0,0.5)">Medium Shadow</option>
+                            <option value="3px 3px 6px rgba(0,0,0,0.5)">Large Shadow</option>
+                            <option value="0 0 5px rgba(255,255,255,0.8)">Glow</option>
+                        </select>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label">Gradient Text:</label>
+                        <select id="text-gradient" class="control-input">
+                            <option value="none">None</option>
+                            <option value="linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000)">Rainbow</option>
+                            <option value="linear-gradient(45deg, #6e45e2, #89d4cf)">Purple to Teal</option>
+                            <option value="linear-gradient(45deg, #ff9a9e, #fad0c4)">Pink</option>
+                            <option value="linear-gradient(45deg, #a1c4fd, #c2e9fb)">Blue</option>
+                        </select>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label">Text Rotation:</label>
+                        <input type="range" id="text-rotation" class="range-slider" min="-15" max="15" value="0">
+                        <span id="text-rotation-value">0deg</span>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label">Letter Spacing:</label>
+                        <input type="range" id="letter-spacing" class="range-slider" min="-2" max="10" value="0">
+                        <span id="letter-spacing-value">0px</span>
+                    </div>
+                </div>
+                
+                <div class="preview-section">
+                    <h3 class="preview-title">Live Preview:</h3>
+                    <div id="text-preview">Your fancy text will appear here...</div>
+                </div>
+                
+                <div class="button-group" style="margin-top: 1.5rem;">
+                    <button class="btn btn-success" id="copy-html-btn">Copy as HTML</button>
+                    <button class="btn" id="download-png-btn">Download as PNG</button>
+                </div>
+            </div>
+            
+            <!-- Ad Container (Middle) -->
+            <div class="ad-container">
+                <span class="ad-label">Advertisement</span>
+                <!-- Replace this div with your Adsterra ad code -->
+                <div id="adsterra-middle-ad">
+                    <!-- Adsterra Ad Code Goes Here -->
+                    <!-- Example: -->
+                   <script async="async" data-cfasync="false" src="//pl27172457.profitableratecpm.com/479add786ed3eb0828f1ae22a12d3b7a/invoke.js"></script>
+                   <div id="container-479add786ed3eb0828f1ae22a12d3b7a"></div>
+                   
+                </div>
+            </div>
+            
+            <!-- How To Use Section -->
+            <div class="tool-section">
+                <h2 class="section-title">How To Use</h2>
+                <ol style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                    <li>Type or paste your text in the "Normal Text" box</li>
+                    <li>Click "Generate Fancy Text" or select a specific style</li>
+                    <li>Use advanced controls to customize the appearance</li>
+                    <li>Copy the fancy text or download as PNG</li>
+                    <li>Use it in your social media profiles, blogs, or anywhere you want!</li>
+                </ol>
+                
+                <h3 class="section-title">About Fancy Text</h3>
+                <p>Fancy text uses Unicode characters that look like stylized versions of normal letters. These characters are supported by most modern platforms including Facebook, Instagram, Twitter, WhatsApp, and more. They make your text stand out and add personality to your posts and profiles.</p>
+            </div>
+        </div>
+        
+        <!-- Privacy Policy Page -->
+        <div id="privacy-page" class="page-content content-page">
+            <h2>Privacy Policy</h2>
+            <p>Last Updated: <span id="privacy-date"></span></p>
+            
+            <p>Welcome to our Fancy Text Generator. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our service.</p>
+            
+            <h3>Information We Collect</h3>
+            <p>We do not directly collect or store any personal information through this tool. However, please be aware that:</p>
+            <ul>
+                <li>Our advertising partners may collect data to serve relevant ads</li>
+                <li>We use cookies for basic functionality and analytics</li>
+                <li>Your IP address may be logged for security purposes</li>
+            </ul>
+            
+            <h3>How We Use Your Information</h3>
+            <p>Any information we collect is used to:</p>
+            <ul>
+                <li>Provide and maintain our service</li>
+                <li>Improve user experience</li>
+                <li>Monitor usage of the service</li>
+                <li>Detect and prevent technical issues</li>
+            </ul>
+            
+            <h3>Third-Party Services</h3>
+            <p>We may employ third-party companies and individuals to:</p>
+            <ul>
+                <li>Facilitate our service</li>
+                <li>Provide the service on our behalf</li>
+                <li>Perform service-related services</li>
+                <li>Assist us in analyzing how our service is used</li>
+            </ul>
+            
+            <h3>Cookies</h3>
+            <p>Cookies are files with small amounts of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the websites you visit and are stored on your device's internal memory.</p>
+            
+            <h3>Security</h3>
+            <p>We value your trust in providing us your information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and we cannot guarantee its absolute security.</p>
+            
+            <h3>Changes to This Privacy Policy</h3>
+            <p>We may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
+            
+            <h3>Contact Us</h3>
+            <p>If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at privacy@fancytextgenerator.example.com.</p>
+        </div>
+        
+        <!-- Terms of Service Page -->
+        <div id="terms-page" class="page-content content-page">
+            <h2>Terms of Service</h2>
+            <p>Last Updated: <span id="terms-date"></span></p>
+            
+            <p>By accessing or using our Fancy Text Generator, you agree to be bound by these Terms. If you disagree with any part of the terms, then you may not access the service.</p>
+            
+            <h3>Use License</h3>
+            <p>Permission is granted to temporarily use our Fancy Text Generator for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title.</p>
+            
+            <h3>Disclaimer</h3>
+            <p>The materials on our service are provided on an 'as is' basis. We make no warranties, expressed or implied, and hereby disclaim and negate all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
+            
+            <h3>Limitations</h3>
+            <p>In no event shall we be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on our service.</p>
+            
+            <h3>Accuracy of Materials</h3>
+            <p>The materials appearing on our service could include technical, typographical, or photographic errors. We do not warrant that any of the materials are accurate, complete or current.</p>
+            
+            <h3>Links</h3>
+            <p>We have not reviewed all of the sites linked to its service and are not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by us of the site.</p>
+            
+            <h3>Modifications</h3>
+            <p>We may revise these terms of service at any time without notice. By using this service you are agreeing to be bound by the then current version of these terms of service.</p>
+            
+            <h3>Governing Law</h3>
+            <p>These terms and conditions are governed by and construed in accordance with the laws of the United States and you irrevocably submit to the exclusive jurisdiction of the courts in that location.</p>
+        </div>
+        
+        <!-- About Us Page -->
+        <div id="about-page" class="page-content content-page">
+            <h2>About Us</h2>
+            
+            <p>Welcome to the Fancy Text Generator, a free online tool that helps you create stylish, unique text for your social media profiles, blogs, and websites.</p>
+            
+            <h3>Our Mission</h3>
+            <p>Our mission is to provide a simple, easy-to-use tool that helps people express themselves creatively through text. We believe that everyone should have access to tools that make their online presence more engaging and personal.</p>
+            
+            <h3>How It Works</h3>
+            <p>Our tool uses Unicode characters to transform your normal text into fancy styled text. These special characters are supported by most modern platforms and devices, allowing you to use your fancy text almost anywhere.</p>
+            
+            <h3>Features</h3>
+            <ul>
+                <li>Multiple text styles (bold, italic, cursive, and more)</li>
+                <li>Advanced customization options</li>
+                <li>Real-time preview</li>
+                <li>Copy to clipboard with one click</li>
+                <li>Download as PNG image</li>
+                <li>Completely free to use</li>
+            </ul>
+            
+            <h3>Our Team</h3>
+            <p>We're a small team of developers and designers who love creating useful online tools. Our goal is to make the internet a more creative and expressive place, one tool at a time.</p>
+            
+            <h3>Contact Us</h3>
+            <p>Have questions or suggestions? We'd love to hear from you! Contact us at:</p>
+            <p></p>
+        </div>
+        
+        <!-- Ad Container (Bottom) -->
+        
+              <script type="text/javascript">
+	         atOptions = {
+		'key' : 'c0c675848846e2097de59545566940a6',
+		'format' : 'iframe',
+		'height' : 600,
+		'width' : 160,
+		'params' : {}
+	       };
+       </script>
+       <script type="text/javascript" src="//www.highperformanceformat.com/c0c675848846e2097de59545566940a6/invoke.js"></script>
+              
+            
+              
+         
+        </div>
+    
+    
+    <footer>
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="#" class="nav-link" data-page="home">Home</a>
+                <a href="#" class="nav-link" data-page="privacy">Privacy Policy</a>
+                <a href="#" class="nav-link" data-page="terms">Terms of Service</a>
+                <a href="#" class="nav-link" data-page="about">About Us</a>
+            </div>
+            <p class="copyright">© <span id="current-year"></span> Advanced Fancy Text Generator. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Theme Toggle Button -->
+    <div class="theme-toggle" id="theme-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+    </div>
+    
+    <!-- HTML to Canvas Library -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    
+    <script>
+        // Set current date for policies
+        const currentDate = new Date().toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        });
+        document.getElementById('privacy-date').textContent = currentDate;
+        document.getElementById('terms-date').textContent = currentDate;
+        
+        // Current Year for Footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Page Navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pageContents = document.querySelectorAll('.page-content');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Remove active class from all links and pages
+                navLinks.forEach(navLink => navLink.classList.remove('active'));
+                pageContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked link
+                link.classList.add('active');
+                
+                // Show corresponding page
+                const pageId = link.dataset.page + '-page';
+                document.getElementById(pageId).classList.add('active');
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            });
+        });
+        
+        // Fancy Text Generator
+        const normalText = document.getElementById('normal-text');
+        const fancyText = document.getElementById('fancy-text');
+        const generateBtn = document.getElementById('generate-btn');
+        const clearBtn = document.getElementById('clear-btn');
+        const copyBtn = document.getElementById('copy-btn');
+        const copyHtmlBtn = document.getElementById('copy-html-btn');
+        const downloadPngBtn = document.getElementById('download-png-btn');
+        const randomStyleBtn = document.getElementById('random-style-btn');
+        const textPreview = document.getElementById('text-preview');
+        const styleButtons = document.querySelectorAll('.style-btn');
+        const themeToggle = document.getElementById('theme-toggle');
+        
+        // Advanced Controls
+        const textColor = document.getElementById('text-color');
+        const bgColor = document.getElementById('bg-color');
+        const textSize = document.getElementById('text-size');
+        const textSizeValue = document.getElementById('text-size-value');
+        const fontFamily = document.getElementById('font-family');
+        const textShadow = document.getElementById('text-shadow');
+        const textGradient = document.getElementById('text-gradient');
+        const textRotation = document.getElementById('text-rotation');
+        const textRotationValue = document.getElementById('text-rotation-value');
+        const letterSpacing = document.getElementById('letter-spacing');
+        const letterSpacingValue = document.getElementById('letter-spacing-value');
+        
+        // Character maps for different styles
+        const styleMaps = {
+            bold: {
+                a: '𝗮', b: '𝗯', c: '𝗰', d: '𝗱', e: '𝗲', f: '𝗳', g: '𝗴', h: '𝗵', i: '𝗶', j: '𝗷', k: '𝗸', l: '𝗹', m: '𝗺',
+                n: '𝗻', o: '𝗼', p: '𝗽', q: '𝗾', r: '𝗿', s: '𝘀', t: '𝘁', u: '𝘂', v: '𝘃', w: '𝘄', x: '𝘅', y: '𝘆', z: '𝘇',
+                A: '𝗔', B: '𝗕', C: '𝗖', D: '𝗗', E: '𝗘', F: '𝗙', G: '𝗚', H: '𝗛', I: '𝗜', J: '𝗝', K: '𝗞', L: '𝗟', M: '𝗠',
+                N: '𝗡', O: '𝗢', P: '𝗣', Q: '𝗤', R: '𝗥', S: '𝗦', T: '𝗧', U: '𝗨', V: '𝗩', W: '𝗪', X: '𝗫', Y: '𝗬', Z: '𝗭',
+                0: '𝟬', 1: '𝟭', 2: '𝟮', 3: '𝟯', 4: '𝟰', 5: '𝟱', 6: '𝟲', 7: '𝟳', 8: '𝟴', 9: '𝟵'
+            },
+            italic: {
+                a: '𝘢', b: '𝘣', c: '𝘤', d: '𝘥', e: '𝘦', f: '𝘧', g: '𝘨', h: '𝘩', i: '𝘪', j: '𝘫', k: '𝘬', l: '𝘭', m: '𝘮',
+                n: '𝘯', o: '𝘰', p: '𝘱', q: '𝘲', r: '𝘳', s: '𝘴', t: '𝘵', u: '𝘶', v: '𝘷', w: '𝘸', x: '𝘹', y: '𝘺', z: '𝘻',
+                A: '𝘈', B: '𝘉', C: '𝘊', D: '𝘋', E: '𝘌', F: '𝘍', G: '𝘎', H: '𝘏', I: '𝘐', J: '𝘑', K: '𝘒', L: '𝘓', M: '𝘔',
+                N: '𝘕', O: '𝘖', P: '𝘗', Q: '𝘘', R: '𝘙', S: '𝘚', T: '𝘛', U: '𝘜', V: '𝘝', W: '𝘞', X: '𝘟', Y: '𝘠', Z: '𝘡'
+            },
+            boldItalic: {
+                a: '𝙖', b: '𝙗', c: '𝙘', d: '𝙙', e: '𝙚', f: '𝙛', g: '𝙜', h: '𝙝', i: '𝙞', j: '𝙟', k: '𝙠', l: '𝙡', m: '𝙢',
+                n: '𝙣', o: '𝙤', p: '𝙥', q: '𝙦', r: '𝙧', s: '𝙨', t: '𝙩', u: '𝙪', v: '𝙫', w: '𝙬', x: '𝙭', y: '𝙮', z: '𝙯',
+                A: '𝘼', B: '𝘽', C: '𝘾', D: '𝘿', E: '𝙀', F: '𝙁', G: '𝙂', H: '𝙃', I: '𝙄', J: '𝙅', K: '𝙆', L: '𝙇', M: '𝙈',
+                N: '𝙉', O: '𝙊', P: '𝙋', Q: '𝙌', R: '𝙍', S: '𝙎', T: '𝙏', U: '𝙐', V: '𝙑', W: '𝙒', X: '𝙓', Y: '𝙔', Z: '𝙕'
+            },
+            script: {
+                a: '𝒶', b: '𝒷', c: '𝒸', d: '𝒹', e: 'ℯ', f: '𝒻', g: 'ℊ', h: '𝒽', i: '𝒾', j: '𝒿', k: '𝓀', l: '𝓁', m: '𝓂',
+                n: '𝓃', o: 'ℴ', p: '𝓅', q: '𝓆', r: '𝓇', s: '𝓈', t: '𝓉', u: '𝓊', v: '𝓋', w: '𝓌', x: '𝓍', y: '𝓎', z: '𝓏',
+                A: '𝒜', B: 'ℬ', C: '𝒞', D: '𝒟', E: 'ℰ', F: 'ℱ', G: '𝒢', H: 'ℋ', I: 'ℐ', J: '𝒥', K: '𝒦', L: 'ℒ', M: 'ℳ',
+                N: '𝒩', O: '𝒪', P: '𝒫', Q: '𝒬', R: 'ℛ', S: '𝒮', T: '𝒯', U: '𝒰', V: '𝒱', W: '𝒲', X: '𝒳', Y: '𝒴', Z: '𝒵'
+            },
+            boldScript: {
+                a: '𝓪', b: '𝓫', c: '𝓬', d: '𝓭', e: '𝓮', f: '𝓯', g: '𝓰', h: '𝓱', i: '𝓲', j: '𝓳', k: '𝓴', l: '𝓵', m: '𝓶',
+                n: '𝓷', o: '𝓸', p: '𝓹', q: '𝓺', r: '𝓻', s: '𝓼', t: '𝓽', u: '𝓾', v: '𝓿', w: '𝔀', x: '𝔁', y: '𝔂', z: '𝔃',
+                A: '𝓐', B: '𝓑', C: '𝓒', D: '𝓓', E: '𝓔', F: '𝓕', G: '𝓖', H: '𝓗', I: '𝓘', J: '𝓙', K: '𝓚', L: '𝓛', M: '𝓜',
+                N: '𝓝', O: '𝓞', P: '𝓟', Q: '𝓠', R: '𝓡', S: '𝓢', T: '𝓣', U: '𝓤', V: '𝓥', W: '𝓦', X: '𝓧', Y: '𝓨', Z: '𝓩'
+            },
+            fraktur: {
+                a: '𝔞', b: '𝔟', c: '𝔠', d: '𝔡', e: '𝔢', f: '𝔣', g: '𝔤', h: '𝔥', i: '𝔦', j: '𝔧', k: '𝔨', l: '𝔩', m: '𝔪',
+                n: '𝔫', o: '𝔬', p: '𝔭', q: '𝔮', r: '𝔯', s: '𝔰', t: '𝔱', u: '𝔲', v: '𝔳', w: '𝔴', x: '𝔵', y: '𝔶', z: '𝔷',
+                A: '𝔄', B: '𝔅', C: 'ℭ', D: '𝔇', E: '𝔈', F: '𝔉', G: '𝔊', H: 'ℌ', I: 'ℑ', J: '𝔍', K: '𝔎', L: '𝔏', M: '𝔐',
+                N: '𝔑', O: '𝔒', P: '𝔓', Q: '𝔔', R: 'ℜ', S: '𝔖', T: '𝔗', U: '𝔘', V: '𝔙', W: '𝔚', X: '𝔛', Y: '𝔜', Z: 'ℨ'
+            },
+            boldFraktur: {
+                a: '𝖆', b: '𝖇', c: '𝖈', d: '𝖉', e: '𝖊', f: '𝖋', g: '𝖌', h: '𝖍', i: '𝖎', j: '𝖏', k: '𝖐', l: '𝖑', m: '𝖒',
+                n: '𝖓', o: '𝖔', p: '𝖕', q: '𝖖', r: '𝖗', s: '𝖘', t: '𝖙', u: '𝖚', v: '𝖛', w: '𝖜', x: '𝖝', y: '𝖞', z: '𝖟',
+                A: '𝕬', B: '𝕭', C: '𝕮', D: '𝕯', E: '𝕰', F: '𝕱', G: '𝕲', H: '𝕳', I: '𝕴', J: '𝕵', K: '𝕶', L: '𝕷', M: '𝕸',
+                N: '𝕹', O: '𝕺', P: '𝕻', Q: '𝕼', R: '𝕽', S: '𝕾', T: '𝕿', U: '𝖀', V: '𝖁', W: '𝖂', X: '𝖃', Y: '𝖄', Z: '𝖅'
+            },
+            doubleStruck: {
+                a: '𝕒', b: '𝕓', c: '𝕔', d: '𝕕', e: '𝕖', f: '𝕗', g: '𝕘', h: '𝕙', i: '𝕚', j: '𝕛', k: '𝕜', l: '𝕝', m: '𝕞',
+                n: '𝕟', o: '𝕠', p: '𝕡', q: '𝕢', r: '𝕣', s: '𝕤', t: '𝕥', u: '𝕦', v: '𝕧', w: '𝕨', x: '𝕩', y: '𝕪', z: '𝕫',
+                A: '𝔸', B: '𝔹', C: 'ℂ', D: '𝔻', E: '𝔼', F: '𝔽', G: '𝔾', H: 'ℍ', I: '𝕀', J: '𝕁', K: '𝕂', L: '𝕃', M: '𝕄',
+                N: 'ℕ', O: '𝕆', P: 'ℙ', Q: 'ℚ', R: 'ℝ', S: '𝕊', T: '𝕋', U: '𝕌', V: '𝕍', W: '𝕎', X: '𝕏', Y: '𝕐', Z: 'ℤ',
+                0: '𝟘', 1: '𝟙', 2: '𝟚', 3: '𝟛', 4: '𝟜', 5: '𝟝', 6: '𝟞', 7: '𝟟', 8: '𝟠', 9: '𝟡'
+            },
+            monospace: {
+                a: '𝚊', b: '𝚋', c: '𝚌', d: '𝚍', e: '𝚎', f: '𝚏', g: '𝚐', h: '𝚑', i: '𝚒', j: '𝚓', k: '𝚔', l: '𝚕', m: '𝚖',
+                n: '𝚗', o: '𝚘', p: '𝚙', q: '𝚚', r: '𝚛', s: '𝚜', t: '𝚝', u: '𝚞', v: '𝚟', w: '𝚠', x: '𝚡', y: '𝚢', z: '𝚣',
+                A: '𝙰', B: '𝙱', C: '𝙲', D: '𝙳', E: '𝙴', F: '𝙵', G: '𝙶', H: '𝙷', I: '𝙸', J: '𝙹', K: '𝙺', L: '𝙻', M: '𝙼',
+                N: '𝙽', O: '𝙾', P: '𝙿', Q: '𝚀', R: '𝚁', S: '𝚂', T: '𝚃', U: '𝚄', V: '𝚅', W: '𝚆', X: '𝚇', Y: '𝚈', Z: '𝚉',
+                0: '𝟶', 1: '𝟷', 2: '𝟸', 3: '𝟹', 4: '𝟺', 5: '𝟻', 6: '𝟼', 7: '𝟽', 8: '𝟾', 9: '𝟿'
+            },
+            circled: {
+                a: 'ⓐ', b: 'ⓑ', c: 'ⓒ', d: 'ⓓ', e: 'ⓔ', f: 'ⓕ', g: 'ⓖ', h: 'ⓗ', i: 'ⓘ', j: 'ⓙ', k: 'ⓚ', l: 'ⓛ', m: 'ⓜ',
+                n: 'ⓝ', o: 'ⓞ', p: 'ⓟ', q: 'ⓠ', r: 'ⓡ', s: 'ⓢ', t: 'ⓣ', u: 'ⓤ', v: 'ⓥ', w: 'ⓦ', x: 'ⓧ', y: 'ⓨ', z: 'ⓩ',
+                A: 'Ⓐ', B: 'Ⓑ', C: 'Ⓒ', D: 'Ⓓ', E: 'Ⓔ', F: 'Ⓕ', G: 'Ⓖ', H: 'Ⓗ', I: 'Ⓘ', J: 'Ⓙ', K: 'Ⓚ', L: 'Ⓛ', M: 'Ⓜ',
+                N: 'Ⓝ', O: 'Ⓞ', P: 'Ⓟ', Q: 'Ⓠ', R: 'Ⓡ', S: 'Ⓢ', T: 'Ⓣ', U: 'Ⓤ', V: 'Ⓥ', W: 'Ⓦ', X: 'Ⓧ', Y: 'Ⓨ', Z: 'Ⓩ',
+                0: '⓪', 1: '①', 2: '②', 3: '③', 4: '④', 5: '⑤', 6: '⑥', 7: '⑦', 8: '⑧', 9: '⑨'
+            },
+            smallcaps: {
+                a: 'ᴀ', b: 'ʙ', c: 'ᴄ', d: 'ᴅ', e: 'ᴇ', f: 'ꜰ', g: 'ɢ', h: 'ʜ', i: 'ɪ', j: 'ᴊ', k: 'ᴋ', l: 'ʟ', m: 'ᴍ',
+                n: 'ɴ', o: 'ᴏ', p: 'ᴘ', q: 'ǫ', r: 'ʀ', s: 'ꜱ', t: 'ᴛ', u: 'ᴜ', v: 'ᴠ', w: 'ᴡ', x: 'x', y: 'ʏ', z: 'ᴢ',
+                A: 'ᴀ', B: 'ʙ', C: 'ᴄ', D: 'ᴅ', E: 'ᴇ', F: 'ꜰ', G: 'ɢ', H: 'ʜ', I: 'ɪ', J: 'ᴊ', K: 'ᴋ', L: 'ʟ', M: 'ᴍ',
+                N: 'ɴ', O: 'ᴏ', P: 'ᴘ', Q: 'ǫ', R: 'ʀ', S: 'ꜱ', T: 'ᴛ', U: 'ᴜ', V: 'ᴠ', W: 'ᴡ', X: 'x', Y: 'ʏ', Z: 'ᴢ'
+            },
+            superscript: {
+                a: 'ᵃ', b: 'ᵇ', c: 'ᶜ', d: 'ᵈ', e: 'ᵉ', f: 'ᶠ', g: 'ᵍ', h: 'ʰ', i: 'ⁱ', j: 'ʲ', k: 'ᵏ', l: 'ˡ', m: 'ᵐ',
+                n: 'ⁿ', o: 'ᵒ', p: 'ᵖ', q: 'ᑫ', r: 'ʳ', s: 'ˢ', t: 'ᵗ', u: 'ᵘ', v: 'ᵛ', w: 'ʷ', x: 'ˣ', y: 'ʸ', z: 'ᶻ',
+                0: '⁰', 1: '¹', 2: '²', 3: '³', 4: '⁴', 5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸', 9: '⁹',
+                '+': '⁺', '-': '⁻', '=': '⁼', '(': '⁽', ')': '⁾'
+            },
+            subscript: {
+                a: 'ₐ', b: 'ᵦ', c: '꜀', d: 'ᑯ', e: 'ₑ', f: 'բ', g: '₉', h: 'ₕ', i: 'ᵢ', j: 'ⱼ', k: 'ₖ', l: 'ₗ', m: 'ₘ',
+                n: 'ₙ', o: 'ₒ', p: 'ₚ', q: '૧', r: 'ᵣ', s: 'ₛ', t: 'ₜ', u: 'ᵤ', v: 'ᵥ', w: 'w', x: 'ₓ', y: 'ᵧ', z: '₂',
+                0: '₀', 1: '₁', 2: '₂', 3: '₃', 4: '₄', 5: '₅', 6: '₆', 7: '₇', 8: '₈', 9: '₉',
+                '+': '₊', '-': '₋', '=': '₌', '(': '₍', ')': '₎'
+            },
+            inverse: {
+                a: 'ɐ', b: 'q', c: 'ɔ', d: 'p', e: 'ǝ', f: 'ɟ', g: 'ƃ', h: 'ɥ', i: 'ᴉ', j: 'ɾ', k: 'ʞ', l: 'l', m: 'ɯ',
+                n: 'u', o: 'o', p: 'd', q: 'b', r: 'ɹ', s: 's', t: 'ʇ', u: 'n', v: 'ʌ', w: 'ʍ', x: 'x', y: 'ʎ', z: 'z',
+                A: '∀', B: '𐐒', C: 'Ɔ', D: 'ᗡ', E: 'Ǝ', F: 'Ⅎ', G: '⅁', H: 'H', I: 'I', J: 'ſ', K: 'ʞ', L: '˥', M: 'W',
+                N: 'N', O: 'O', P: 'Ԁ', Q: 'Ό', R: 'ᴚ', S: 'S', T: '⊥', U: '∩', V: 'Λ', W: 'M', X: 'X', Y: '⅄', Z: 'Z',
+                1: 'Ɩ', 2: 'ᄅ', 3: 'Ɛ', 4: 'ㄣ', 5: 'ϛ', 6: '9', 7: 'ㄥ', 8: '8', 9: '6', 0: '0',
+                ',': "'", '.': '˙', '?': '¿', '!': '¡', '"': '„', "'": ',', '`': ',', '(': ')', ')': '(', '[': ']', ']': '[', '{': '}', '}': '{', '<': '>', '>': '<', '&': '⅋', '_': '‾'
+            },
+            upsideDown: {
+                a: 'ɐ', b: 'q', c: 'ɔ', d: 'p', e: 'ǝ', f: 'ɟ', g: 'ƃ', h: 'ɥ', i: 'ᴉ', j: 'ɾ', k: 'ʞ', l: 'l', m: 'ɯ',
+                n: 'u', o: 'o', p: 'd', q: 'b', r: 'ɹ', s: 's', t: 'ʇ', u: 'n', v: 'ʌ', w: 'ʍ', x: 'x', y: 'ʎ', z: 'z',
+                A: '∀', B: '𐐒', C: 'Ɔ', D: 'ᗡ', E: 'Ǝ', F: 'Ⅎ', G: '⅁', H: 'H', I: 'I', J: 'ſ', K: 'ʞ', L: '˥', M: 'W',
+                N: 'N', O: 'O', P: 'Ԁ', Q: 'Ό', R: 'ᴚ', S: 'S', T: '⊥', U: '∩', V: 'Λ', W: 'M', X: 'X', Y: '⅄', Z: 'Z',
+                1: 'Ɩ', 2: 'ᄅ', 3: 'Ɛ', 4: 'ㄣ', 5: 'ϛ', 6: '9', 7: 'ㄥ', 8: '8', 9: '6', 0: '0',
+                ',': "'", '.': '˙', '?': '¿', '!': '¡', '"': '„', "'": ',', '`': ',', '(': ')', ')': '(', '[': ']', ']': '[', '{': '}', '}': '{', '<': '>', '>': '<', '&': '⅋', '_': '‾'
+            },
+            bubble: {
+                a: 'ⓐ', b: 'ⓑ', c: 'ⓒ', d: 'ⓓ', e: 'ⓔ', f: 'ⓕ', g: 'ⓖ', h: 'ⓗ', i: 'ⓘ', j: 'ⓙ', k: 'ⓚ', l: 'ⓛ', m: 'ⓜ',
+                n: 'ⓝ', o: 'ⓞ', p: 'ⓟ', q: 'ⓠ', r: 'ⓡ', s: 'ⓢ', t: 'ⓣ', u: 'ⓤ', v: 'ⓥ', w: 'ⓦ', x: 'ⓧ', y: 'ⓨ', z: 'ⓩ',
+                A: 'Ⓐ', B: 'Ⓑ', C: 'Ⓒ', D: 'Ⓓ', E: 'Ⓔ', F: 'Ⓕ', G: 'Ⓖ', H: 'Ⓗ', I: 'Ⓘ', J: 'Ⓙ', K: 'Ⓚ', L: 'Ⓛ', M: 'Ⓜ',
+                N: 'Ⓝ', O: 'Ⓞ', P: 'Ⓟ', Q: 'Ⓠ', R: 'Ⓡ', S: 'Ⓢ', T: 'Ⓣ', U: 'Ⓤ', V: 'Ⓥ', W: 'Ⓦ', X: 'Ⓧ', Y: 'Ⓨ', Z: 'Ⓩ'
+            },
+            square: {
+                a: '🄰', b: '🄱', c: '🄲', d: '🄳', e: '🄴', f: '🄵', g: '🄶', h: '🄷', i: '🄸', j: '🄹', k: '🄺', l: '🄻', m: '🄼',
+                n: '🄽', o: '🄾', p: '🄿', q: '🅀', r: '🅁', s: '🅂', t: '🅃', u: '🅄', v: '🅅', w: '🅆', x: '🅇', y: '🅈', z: '🅉',
+                A: '🄰', B: '🄱', C: '🄲', D: '🄳', E: '🄴', F: '🄵', G: '🄶', H: '🄷', I: '🄸', J: '🄹', K: '🄺', L: '🄻', M: '🄼',
+                N: '🄽', O: '🄾', P: '🄿', Q: '🅀', R: '🅁', S: '🅂', T: '🅃', U: '🅄', V: '🅅', W: '🅆', X: '🅇', Y: '🅈', Z: '🅉'
+            }
+        };
+        
+        // Zalgo characters
+        const zalgoUp = [
+            '\u030d', '\u030e', '\u0304', '\u0305', '\u033f', '\u0311', '\u0306', '\u0310', '\u0352', '\u0357',
+            '\u0351', '\u0307', '\u0308', '\u030a', '\u0342', '\u0343', '\u0344', '\u034a', '\u034b', '\u034c',
+            '\u0303', '\u0302', '\u030c', '\u0350', '\u0300', '\u0301', '\u030b', '\u030f', '\u0312', '\u0313',
+            '\u0314', '\u033d', '\u0309', '\u0363', '\u0364', '\u0365', '\u0366', '\u0367', '\u0368', '\u0369',
+            '\u036a', '\u036b', '\u036c', '\u036d', '\u036e', '\u036f', '\u033e', '\u035b', '\u0346', '\u031a'
+        ];
+        
+        const zalgoDown = [
+            '\u0316', '\u0317', '\u0318', '\u0319', '\u031c', '\u031d', '\u031e', '\u031f', '\u0320', '\u0324',
+            '\u0325', '\u0326', '\u0329', '\u032a', '\u032b', '\u032c', '\u032d', '\u032e', '\u032f', '\u0330',
+            '\u0331', '\u0332', '\u0333', '\u0339', '\u033a', '\u033b', '\u033c', '\u0345', '\u0347', '\u0348',
+            '\u0349', '\u034d', '\u034e', '\u0353', '\u0354', '\u0355', '\u0356', '\u0359', '\u035a', '\u0323'
+        ];
+        
+        const zalgoMid = [
+            '\u0315', '\u031b', '\u0340', '\u0341', '\u0358', '\u0321', '\u0322', '\u0327', '\u0328', '\u0334',
+            '\u0335', '\u0336', '\u034f', '\u035c', '\u035d', '\u035e', '\u035f', '\u0360', '\u0362', '\u0338',
+            '\u0337', '\u0361', '\u0489'
+        ];
+        
+        // Current style
+        let currentStyle = 'bold';
+        
+        // Generate fancy text
+        function generateFancyText(text, style) {
+            if (!text) return '';
+            
+            currentStyle = style;
+            
+            if (style === 'underline') {
+                return text.split('').map(char => char + '\u0332').join('');
+            } else if (style === 'strikethrough') {
+                return text.split('').map(char => char + '\u0336').join('');
+            } else if (style === 'zalgo') {
+                return zalgoText(text);
+            } else if (styleMaps[style]) {
+                return text.split('').map(char => styleMaps[style][char] || char).join('');
+            } else {
+                // Default to bold if style not found
+                return text.split('').map(char => styleMaps['bold'][char] || char).join('');
+            }
+        }
+        
+        // Generate Zalgo text
+        function zalgoText(text) {
+            let result = '';
+            for (let i = 0; i < text.length; i++) {
+                result += text[i];
+                
+                // Add up to 5 zalgo characters above, below, and in the middle
+                const numUp = Math.floor(Math.random() * 5);
+                const numDown = Math.floor(Math.random() * 5);
+                const numMid = Math.floor(Math.random() * 3);
+                
+                for (let j = 0; j < numUp; j++) {
+                    result += zalgoUp[Math.floor(Math.random() * zalgoUp.length)];
+                }
+                
+                for (let j = 0; j < numMid; j++) {
+                    result += zalgoMid[Math.floor(Math.random() * zalgoMid.length)];
+                }
+                
+                for (let j = 0; j < numDown; j++) {
+                    result += zalgoDown[Math.floor(Math.random() * zalgoDown.length)];
+                }
+            }
+            return result;
+        }
+        
+        // Update preview with styles
+        function updatePreview() {
+            const text = normalText.value;
+            fancyText.value = generateFancyText(text, currentStyle);
+            
+            // Apply advanced styles to preview
+            textPreview.style.color = textColor.value;
+            textPreview.style.backgroundColor = bgColor.value;
+            textPreview.style.fontSize = textSize.value + 'px';
+            textPreview.style.fontFamily = fontFamily.value;
+            textPreview.style.textShadow = textShadow.value;
+            
+            // Apply gradient if selected
+            if (textGradient.value !== 'none') {
+                textPreview.style.backgroundImage = textGradient.value;
+                textPreview.style.webkitBackgroundClip = 'text';
+                textPreview.style.backgroundClip = 'text';
+                textPreview.style.color = 'transparent';
+            } else {
+                textPreview.style.backgroundImage = 'none';
+                textPreview.style.webkitBackgroundClip = 'initial';
+                textPreview.style.backgroundClip = 'initial';
+                textPreview.style.color = textColor.value;
+            }
+            
+            // Apply rotation
+            textPreview.style.transform = `rotate(${textRotation.value}deg)`;
+            
+            // Apply letter spacing
+            textPreview.style.letterSpacing = `${letterSpacing.value}px`;
+            
+            textPreview.innerHTML = fancyText.value;
+        }
+        
+        // Event Listeners
+        generateBtn.addEventListener('click', updatePreview);
+        
+        clearBtn.addEventListener('click', () => {
+            normalText.value = '';
+            fancyText.value = '';
+            textPreview.textContent = 'Your fancy text will appear here...';
+            textPreview.style = ''; // Reset all styles
+        });
+        
+        copyBtn.addEventListener('click', () => {
+            if (!fancyText.value) return;
+            
+            fancyText.select();
+            document.execCommand('copy');
+            
+            // Change button text temporarily
+            copyBtn.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 6L9 17l-5-5"></path>
+                </svg>
+                Copied!
+            `;
+            
+            setTimeout(() => {
+                copyBtn.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    Copy
+                `;
+            }, 2000);
+        });
+        
+        copyHtmlBtn.addEventListener('click', () => {
+            if (!fancyText.value) return;
+            
+            const html = `<span style="color: ${textColor.value}; background-color: ${bgColor.value}; font-size: ${textSize.value}px; font-family: ${fontFamily.value}; text-shadow: ${textShadow.value}; ${textGradient.value !== 'none' ? `background-image: ${textGradient.value}; -webkit-background-clip: text; background-clip: text; color: transparent;` : ''} transform: rotate(${textRotation.value}deg); letter-spacing: ${letterSpacing.value}px;">${fancyText.value}</span>`;
+            
+            const tempInput = document.createElement('textarea');
+            tempInput.value = html;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            
+            // Change button text temporarily
+            copyHtmlBtn.textContent = 'HTML Copied!';
+            setTimeout(() => {
+                copyHtmlBtn.textContent = 'Copy as HTML';
+            }, 2000);
+        });
+        
+        downloadPngBtn.addEventListener('click', () => {
+            if (!fancyText.value) return;
+            
+            // Temporarily apply all styles to the preview for capture
+            updatePreview();
+            
+            html2canvas(textPreview).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'fancy-text.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        });
+        
+        randomStyleBtn.addEventListener('click', () => {
+            const styles = Object.keys(styleMaps);
+            const randomStyle = styles[Math.floor(Math.random() * styles.length)];
+            
+            // Highlight the random style button
+            styleButtons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.style === randomStyle) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            currentStyle = randomStyle;
+            updatePreview();
+        });
+        
+        // Style buttons
+        styleButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                styleButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                currentStyle = button.getAttribute('data-style');
+                updatePreview();
+            });
+        });
+        
+        // Auto-update preview when typing
+        normalText.addEventListener('input', updatePreview);
+        
+        // Advanced controls event listeners
+        textColor.addEventListener('input', updatePreview);
+        bgColor.addEventListener('input', updatePreview);
+        textSize.addEventListener('input', () => {
+            textSizeValue.textContent = textSize.value + 'px';
+            updatePreview();
+        });
+        fontFamily.addEventListener('change', updatePreview);
+        textShadow.addEventListener('change', updatePreview);
+        textGradient.addEventListener('change', updatePreview);
+        textRotation.addEventListener('input', () => {
+            textRotationValue.textContent = textRotation.value + 'deg';
+            updatePreview();
+        });
+        letterSpacing.addEventListener('input', () => {
+            letterSpacingValue.textContent = letterSpacing.value + 'px';
+            updatePreview();
+        });
+        
+        // Theme toggle
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            // Save preference to localStorage
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+        
+        // Initialize with bold style active
+        document.querySelector('[data-style="bold"]').classList.add('active');
+    </script>
+ <script type='text/javascript' src='//pl27187391.profitableratecpm.com/a6/cc/4d/a6cc4d4a49b640d8357924fe2e3e7032.js'></script>
+</body>
+</html>
